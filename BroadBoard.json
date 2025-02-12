@@ -1,0 +1,30 @@
+{
+  "board": "RaspberryPi:Pico-W",
+  "language": "C++",
+  "path": "BroadBoard/Generated",
+  "pinout": {
+    "GP0": {
+      "name": "RED_LED",
+      "type": "output"
+    },
+    "GP1": {
+      "name": "BUTTON",
+      "type": "input",
+      "resistor": "pull_down"
+    },
+    "GP2": {
+      "name": "DIMMABLE_LED",
+      "type": "pwm"
+    },
+    "ADC0": {
+      "name": "ADC_INPUT",
+      "type": "adc"
+    },
+    "UART0": {
+      "name": "SERIAL_OUT",
+      "type": "uart",
+      "rx": "GP1",
+      "tx": "GP0"
+    }
+  }
+}
