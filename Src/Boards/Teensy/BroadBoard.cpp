@@ -3,6 +3,30 @@
 
 namespace HAL {
 
+    void Logger::init(uint32_t baudRate) {
+        Serial.begin(baudRate);
+    }
+
+    void Logger::println(const char* string) {
+        Serial.println(string);
+    }
+
+    void Logger::println(const uint8_t v) {
+        Serial.println(v);
+    }
+
+    void Logger::println(const uint64_t v) {
+        Serial.println(v);
+    }
+
+    void Logger::print(const char* string) {
+        Serial.print(string);
+    }
+
+    void Logger::print(const uint8_t v) {
+        Serial.print(v);
+    }
+
     void OutputPin::setImpl(bool v) {
         digitalWriteFast(pin, v);
     }
@@ -12,11 +36,17 @@ namespace HAL {
     }
 
     void InputPin::init(InputResistor resistor) {
-
+        if (resistor == InputResistor::PULL_UP) {
+            pinMode(pin, INPUT_PULLUP);
+        } else if (resistor == InputResistor::PULL_DOWN) {
+            pinMode(pin, INPUT_PULLDOWN);
+        } else {
+            pinMode(pin, INPUT);
+        }
     }
 
     bool InputPin::read() {
-        return 0;
+        return digitalReadFast(pin);
     }
 
     void PWMPin::setDutyCycle(uint32_t dutyCycle) {}

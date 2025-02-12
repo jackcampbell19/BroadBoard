@@ -3,6 +3,7 @@
 
 
 #include <cstdint>
+#include <cstdio>
 
 
 namespace HAL {
@@ -88,6 +89,16 @@ namespace HAL {
 
     enum class UARTParity {
         NONE
+    };
+
+    class Logger {
+    public:
+        static void init(uint32_t baudRate);
+        static void println(const char* string);
+        static void println(const uint8_t v);
+        static void println(const uint64_t v);
+        static void print(const uint8_t v);
+        static void print(const char* string);
     };
 
     class UART {
