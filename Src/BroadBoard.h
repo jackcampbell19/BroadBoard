@@ -35,6 +35,10 @@ namespace HAL {
             set(!value);
         }
 
+        uint8_t pinNumber() {
+            return pin;
+        }
+
     private:
         void setImpl(bool v);
         void init();
@@ -58,6 +62,10 @@ namespace HAL {
 
         void wait(bool trigger) {
             while (read() != trigger) {}
+        }
+
+        uint8_t pinNumber() {
+            return pin;
         }
 
     private:
